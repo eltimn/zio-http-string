@@ -8,15 +8,16 @@ ThisBuild / scalacOptions     := optionsOnOrElse("2.13", "2.12")("-Ywarn-unused"
 ThisBuild / semanticdbEnabled := true
 ThisBuild / semanticdbVersion := scalafixSemanticdb.revision
 ThisBuild / scalafixDependencies ++= List("com.github.liancheng" %% "organize-imports" % "0.6.0")
+ThisBuild / resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
 def settingsApp = Seq(
   name := "zio-http-string",
   Compile / run / mainClass := Option("eltimn.ziohttpstring.MainApp"),
   testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework"),
   libraryDependencies ++= Seq(
-    zioHttp, 
-    zioTest, 
-    zioTestSBT, 
+    zioHttp,
+    zioTest,
+    zioTestSBT,
     zioTestMagnolia
   ),
 )
